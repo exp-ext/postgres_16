@@ -103,3 +103,22 @@ docker-compose run --rm db restore_db
 ```
 
 — скачает самый свежий дамп из бакета, удалит старую БД, создаст новую и восстановит из него все таблицы.
+
+## ⚙️ Пример запуска прод-образа
+
+```bash
+docker pull expext/postgres_16:latest
+
+docker run -d \
+  --name pg_main \
+  -p 49160:5432 \
+  -e POSTGRES_DB=geocad \
+  -e POSTGRES_USER=... \
+  -e POSTGRES_PASSWORD=... \
+  -e AWS_ACCESS_KEY_ID=... \
+  -e AWS_SECRET_ACCESS_KEY=... \
+  -e AWS_DEFAULT_REGION=ru-msk \
+  -e AWS_ENDPOINT=... \
+  -e BUCKET=geocad-backups \
+  expext/postgres_16:latest
+```
