@@ -11,6 +11,7 @@
 
 ## 🔍 Структура
 
+```
 ├── backup/ # Контекст Docker-образа
 │ ├── Dockerfile # Описание образа postgres:+awscli+cron
 │ ├── entrypoint.sh # Запуск PostgreSQL + выбор действий
@@ -23,6 +24,7 @@
 ├── docker-compose.yml # Описание сервисов: db + pgadmin
 ├── .env.example # Пример файла окружения с переменными
 └── README.md # Этот файл
+```
 
 ---
 
