@@ -1,0 +1,33 @@
+services:
+  db:
+    image: ${DOCKER_USERNAME}/postgres_16:latest
+    container_name: pg_main
+    restart: unless-stopped
+    ports:
+      - "49160:5432"
+    environment:
+      POSTGRES_DB:            ${POSTGRES_DB}
+      POSTGRES_USER:          ${POSTGRES_USER}
+      POSTGRES_PASSWORD:      ${POSTGRES_PASSWORD}
+      AWS_ACCESS_KEY_ID:      ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY:  ${AWS_SECRET_ACCESS_KEY}
+      AWS_DEFAULT_REGION:     ${AWS_DEFAULT_REGION}
+      AWS_ENDPOINT:           ${AWS_ENDPOINT}
+      BUCKET:                 ${BUCKET}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin_main
+    ports:
+      - "8095:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL:    ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    volumes:
+      - pgadmin_volume_main:/var/lib/pgadmin
+
+volumes:
+  pg_data:
+  pgadmin_volume_main:
