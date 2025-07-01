@@ -1,0 +1,6 @@
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=""
+
+0 2 * * * root /usr/local/bin/backup_db_cron.sh >> /var/log/backup.log 2>&1
+

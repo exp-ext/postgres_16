@@ -1,22 +1,8 @@
 #!/usr/bin/env sh
 set -e
 
-load_env() {
-  f="$1"
-  [ -f "$f" ] || return 0
-  while IFS= read -r line || [ -n "$line" ]; do
-    line=$(printf '%s' "$line" | tr -d '\r')
-    case "$line" in
-      ''|\#*) continue ;;
-    esac
-    key=${line%%=*}
-    val=${line#*=}
-    key=$(printf '%s' "$key" | tr -d '[:space:]')
-    export "$key=$val"
-  done < "$f"
-}
-
 # загрузить .env
+. /usr/local/bin/env_loader.sh
 load_env "$ENV_FILE"
 
 # если указан кастомный endpoint — добавим флаг

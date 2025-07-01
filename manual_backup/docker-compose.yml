@@ -1,7 +1,7 @@
 services:
   db:
     build:
-      context: ./backup
+      context: ../backup
     container_name: pg_main
     restart: unless-stopped
     ports:

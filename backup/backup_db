@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
-# простой wrapper для ручного бэкапа
+
 exec /usr/local/bin/backup.sh
